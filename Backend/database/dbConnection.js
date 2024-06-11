@@ -5,7 +5,7 @@ export const dbConnection = () => {
     "<PASSWORD>",
     process.env.DATABASE_PASSWORD
   );
-  console.log(process.env.DATABASE_URL);
+  // console.log(process.env.DATABASE_URL);
   mongoose
     .connect(DB, {
       dbName: "JOB_PORTAL_DATABASE",
