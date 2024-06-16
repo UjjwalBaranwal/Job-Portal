@@ -67,12 +67,21 @@ const Home = () => {
 
     if (selected) {
       filteredJobs = filteredJobs.filter(
-        ({ jobLocation, maxPrice, salaryType, employmentType }) =>
-          jobLocation.toLowerCase() === selected.toLowerCase() ||
-          parseInt(maxPrice) <= parseInt(selected) ||
-          salaryType.toLowerCase() === selected.toLowerCase() ||
-          employmentType.toLowerCase() === selected.toLowerCase()
+        ({ jobLocation, 
+          maxPrice,
+           experienceLevel,
+            salaryType, 
+            employmentType,
+            postingDate 
+          }) =>
+            postingDate >= selected ||
+            experienceLevel.toLowerCase()=== selected.toLowerCase() ||
+            salaryType.toLowerCase()===selected.toLowerCase() ||
+            jobLocation.toLowerCase()===selected.toLowerCase() ||
+            employmentType.toLowerCase() === selected.toLowerCase()|| 
+             parseInt(maxPrice) <= parseInt(selected) 
       );
+
     }
     //slice the data based on current page
     const  {startIndex, endIndex}= calculatePageRange();
