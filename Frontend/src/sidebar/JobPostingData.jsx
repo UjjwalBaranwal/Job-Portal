@@ -11,34 +11,32 @@ const JobPostingData = ({handleChange}) => {
     const twentyFourHourAgoDate = twentyFourHourAgo.toISOString().slice(0,10);
     const sevenDaysAgoDate = sevenDaysAgo.toISOString().slice(0,10);
     const thirtyDaysAgoDate = thirtyDaysAgo.toISOString().slice(0,10);
-    console.log(twentyFourHourAgo);
-    console.log(twentyFourHourAgoDate);
   return (
     <div>
         <h4 className='text-lg font-medium mb-2'>Date of posting</h4>
 
         <div>
             <label className='sidebar-label-container'>
-                <input type="radio" name='test' id='test' value="" onChange={handleChange}/>
+                <input type="radio" name='test3' id='test3' value="" onChange={handleChange}/>
                 <span className='checkmark'></span>All time
             </label>
             <InputField
                  handleChange={handleChange} 
                  value={twentyFourHourAgoDate}
                  title="Last 24 Hours" 
-                 name="test"
+                 name="test3"
             />
             <InputField
                  handleChange={handleChange} 
                  value={sevenDaysAgoDate}
                  title="Last 7 days" 
-                 name="test"
+                 name="test3"
             />
             <InputField
                  handleChange={handleChange} 
                  value={thirtyDaysAgoDate} 
                  title="Last Month" 
-                 name="test"
+                 name="test3"
             />
             
         </div>
