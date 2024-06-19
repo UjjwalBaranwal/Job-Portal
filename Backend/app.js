@@ -6,7 +6,7 @@ import fileUpload from "express-fileupload";
 
 import userRouter from "./routes/userRoutes.js";
 import jobsRouter from "./routes/jobsRoutes.js";
-import applicationRouter from "./routes/applicationRoutes.js";
+// import applicationRouter from "./routes/applicationRoutes.js";
 import { dbConnection } from "./database/dbConnection.js";
 import ErrorHandler, { errorMiddleware } from "./middleware/error.js";
 const app = express();
@@ -30,7 +30,7 @@ app.use(
 
 app.use("/api/v1/user", userRouter);
 app.use("/api/v1/job", jobsRouter);
-app.use("/api/v1/application", applicationRouter);
+// app.use("/api/v1/application", applicationRouter);
 
 dbConnection();
 
