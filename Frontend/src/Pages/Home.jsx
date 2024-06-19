@@ -3,6 +3,8 @@ import Banner from "../components/Banner";
 import Card from "../components/Card";
 import Jobs from "./Jobs"; // Ensure the path is correct
 import Sidebar from "../sidebar/Sidebar";
+import Newslatter from "../components/Newsletter";
+import Newsletter from "../components/Newsletter";
 
 const Home = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
@@ -67,12 +69,23 @@ const Home = () => {
 
     if (selected) {
       filteredJobs = filteredJobs.filter(
-        ({ jobLocation, maxPrice, salaryType, employmentType }) =>
-          jobLocation.toLowerCase() === selected.toLowerCase() ||
-          parseInt(maxPrice) <= parseInt(selected) ||
-          salaryType.toLowerCase() === selected.toLowerCase() ||
-          employmentType.toLowerCase() === selected.toLowerCase()
+        ({ jobLocation, 
+          maxPrice,
+           experienceLevel,
+            salaryType, 
+            employmentType,
+            postingDate 
+          }) =>
+            parseInt(maxPrice)<=parseInt(selected)||
+            postingDate >= selected ||
+            experienceLevel.toLowerCase()=== selected.toLowerCase() ||
+            salaryType.toLowerCase()===selected.toLowerCase() ||
+            jobLocation.toLowerCase()===selected.toLowerCase() ||
+            employmentType.toLowerCase() === selected.toLowerCase()
+            //parseInt(maxPrice)<= parseInt(selected)         
+            
       );
+
     }
     //slice the data based on current page
     const  {startIndex, endIndex}= calculatePageRange();
@@ -117,7 +130,7 @@ const Home = () => {
          </div>
 
         {/* right side */}
-        <div className="bg-white p-4 rounded">Right</div>
+        <div className="bg-white p-4 rounded"><Newsletter/></div>
 
         
       </div>
