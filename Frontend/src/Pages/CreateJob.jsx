@@ -1,14 +1,32 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useForm } from "react-hook-form"
+import CreatableSelect from 'react-select/creatable';
 const CreateJob = () => {
+    const [selectedOption,setSelectedOption]= useState(null);
+
+    
     const {
         register,
         handleSubmit,
         watch,
         formState: { errors },
-      } = useForm()
+      } = useForm();
     
-      const onSubmit = (data) =>{ console.log(data);}
+      const onSubmit = (data) =>{
+        data.skills = selectedOption;
+        console.log(data);}
+    const options=[
+        {value:"JavaScript",label:"JavaScript"},
+        {value:"C++",label:"C++"},
+        {value:"Java",label:"Java"},
+        {value:"HTML",label:"HTML"},
+        {value:"CSS",label:"CSS"},
+        {value:"React",label:"React"},
+        {value:"Node",label:"Node"},
+        {value:"Express",label:"Express"},
+        {value:"MongoDB",label:"MongoDB"},
+        {value:"Redux",label:"Redux"},
+    ]
     
   return (
     <div className='max-w-screen-2x1 container mx-auto x1:px-24 px-4 '>
@@ -90,8 +108,48 @@ const CreateJob = () => {
             {/*5th row */}
             <div>
             <label className='block mb-2 text-lg'>Required Skill Sets </label>
+                <CreatableSelect 
+                defaultValue={selectedOption}
+                onChange={setSelectedOption}
+                options={options}
+                isMulti
+                className='create-job-input py-4' />
             </div>
+            {/*6th row */}
+            <div className='create-job-flex'>
+            <div className='lg:w-1/2 w-full'>
+                    <label className='block mb-2 text-lg'>Company Logo</label>
+                    <input type="url" placeholder={"Paste your company logo URL: https://weshare.com"} 
+                    {...register("companyLogo")} className=' create-job-input'/>
+                </div>
 
+            <div className='lg:w-1/2 w-full'>
+                    <label className='block mb-2 text-lg'>Employment Type</label>
+                    <select {...register("employmentType") } className='create-job-input'>
+        <option value="">Choose employment type</option>
+        <option value="Full-time">Full-time</option>
+        <option value="Part-time">Part-time</option>
+        <option value="Temporary">Temporary</option>
+       
+      </select>
+                </div>
+
+            </div>
+            {/*7th row */}
+            <div className='w-full '>
+            <label className='block mb-2 text-lg'>Job Description </label>
+             <textarea   {...register("description") } className='w-full pl-3 py-1.5 focus:outline-none placeholder:text-gray-700'
+             rows={6}
+            defaultValue={"Lorem ipsum dolor sit amet consectetur adipisicing elit. Maxime eius, iste quae adipisci totam itaque officia? Exercitationem porro dolorum, impedit,"}
+             placeholder='Job Description Apply for job do your best make is proud....'/>
+            </div>
+            {/*last Row */}
+            <div className='w-full '>
+            <label className='block mb-2 text-lg'>Job Posted By: </label>
+            <input type="email" placeholder={"Ex: abc@mail.com"} 
+                    {...register("postedBy")} className=' create-job-input'/>
+
+            </div>
       <input type="submit" className='block mt-12 bg-blue text-white font-semibold px-8 py-2 rounded-sm cursor-pointer' />
     </form>
         </div>
